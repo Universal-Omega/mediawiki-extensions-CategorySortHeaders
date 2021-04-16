@@ -1,0 +1,27 @@
+{
+	"name": "CategorySortHeaders",
+	"version": "0.4.0",
+	"author": "[http://mediawiki.org/wiki/User:Bawolff Brian Wolff]",
+	"url": "https://www.mediawiki.org/wiki/Extension:CategorySortHeaders",
+	"descriptionmsg": "categorysortheaders-desc",
+	"license-name": "GPL-2.0-or-later",
+	"type": "other",
+	"callback": "CustomHeaderCollation::onRegistration",
+	"MessagesDirs": {
+		"CategorySortHeaders": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"CustomHeaderCollation": "CategorySortHeaders_body.php"
+	},
+	"Hooks": {
+		"Collation::factory": "CustomHeaderCollation::onCategorySortHeadersSetup"
+	},
+	"config": {
+		"CategorySortHeaderAppendPageNameToKey": {
+			"value": true
+		}
+	},
+	"manifest_version": 2
+}
