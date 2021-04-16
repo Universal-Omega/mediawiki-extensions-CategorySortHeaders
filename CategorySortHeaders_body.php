@@ -7,6 +7,22 @@
  * custom 'first-character' headings for category pages.
  */
 class CustomHeaderCollation extends Collation {
+	public static function onRegistration() {
+		global $wgCategoryCollation;
+
+		$wgCategoryCollation = 'CustomHeaderCollation';
+	}
+
+
+	public static function onCategorySortHeadersSetup( $collationName, &$collationObject ) {
+		if ( $collationName === 'CustomHeaderCollation' ) {
+			$collationObject = new self;
+
+			return false;
+		}
+
+		return true;
+	}
 
 	// The basic idea is we store the sortkey as three parts A^B^C
 	// A is the capitalized first letter of the header it falls under.
